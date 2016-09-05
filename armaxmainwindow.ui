@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ARMAXmainWindow</class>
+ <widget class="QMainWindow" name="ARMAXmainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1587</width>
+    <height>853</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>760</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>1024</width>
+    <height>760</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>ARMAXmainWindow</string>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::GroupedDragging</set>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>1447</width>
+     <height>704</height>
+    </size>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_7">
+    <item>
+     <widget class="QGroupBox" name="Leftcontrols">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>350</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMinimumSize</enum>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QGroupBox" name="ARParametersSection">
+           <property name="title">
+            <string/>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QTableWidget" name="ARTable">
+              <property name="contextMenuPolicy">
+               <enum>Qt::PreventContextMenu</enum>
+              </property>
+              <property name="sizeAdjustPolicy">
+               <enum>QAbstractScrollArea::AdjustIgnored</enum>
+              </property>
+              <property name="rowCount">
+               <number>1</number>
+              </property>
+              <attribute name="horizontalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderMinimumSectionSize">
+               <number>46</number>
+              </attribute>
+              <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="verticalHeaderStretchLastSection">
+               <bool>false</bool>
+              </attribute>
+              <row/>
+              <column>
+               <property name="text">
+                <string>AR</string>
+               </property>
+              </column>
+              <item row="0" column="0">
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignTrailing|AlignVCenter</set>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="ARChangeSection">
+              <item>
+               <widget class="QPushButton" name="IncreaseARButton">
+                <property name="text">
+                 <string>+</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="DecreaseARButton">
+                <property name="text">
+                 <string>-</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="MAParametersSection">
+           <property name="title">
+            <string/>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_9">
+            <item>
+             <widget class="QTableWidget" name="MATable">
+              <property name="contextMenuPolicy">
+               <enum>Qt::PreventContextMenu</enum>
+              </property>
+              <property name="sizeAdjustPolicy">
+               <enum>QAbstractScrollArea::AdjustIgnored</enum>
+              </property>
+              <property name="rowCount">
+               <number>1</number>
+              </property>
+              <attribute name="horizontalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderMinimumSectionSize">
+               <number>46</number>
+              </attribute>
+              <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="verticalHeaderStretchLastSection">
+               <bool>false</bool>
+              </attribute>
+              <row/>
+              <column>
+               <property name="text">
+                <string>MA</string>
+               </property>
+              </column>
+              <item row="0" column="0">
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="textAlignment">
+                <set>AlignTrailing|AlignVCenter</set>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="ModelOrderChangeSection_2">
+              <item>
+               <widget class="QPushButton" name="IncreaseMAButton">
+                <property name="text">
+                 <string>+</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="DecreaseMAButton">
+                <property name="text">
+                 <string>-</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="AproximationButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Aproximate current model</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="ModelFitParametrsSection">
+         <property name="title">
+          <string>Model fit parameters</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLabel" name="SigmaLabel">
+            <property name="text">
+             <string>sigma</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="AIClabel">
+            <property name="text">
+             <string>AIC</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="FPClabel">
+            <property name="text">
+             <string>FPC</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="MSElabel">
+            <property name="text">
+             <string>MSE</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="FittingSection">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title">
+          <string>Fittting</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QCheckBox" name="UseEpsilonsCheckbox">
+            <property name="text">
+             <string>Use Epsilons from memory</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="UseStartingPointCheckbox">
+            <property name="text">
+             <string>Use current model as starting point </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="FitButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="text">
+             <string>Fit</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCustomPlot" name="Chart" native="true">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>800</width>
+        <height>600</height>
+       </size>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::NoContextMenu</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="RightControls">
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QGroupBox" name="EpsilonsLoadSection">
+         <property name="title">
+          <string>Epsilons</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <layout class="QHBoxLayout" name="ComputeEpsilonsSection">
+            <item>
+             <widget class="QPushButton" name="ComputeEpsilonsButton">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>Compute epsilons from HO AR:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="HighOrderARedit">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>0</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="LoadEpsilonsFromFileSection">
+            <item>
+             <widget class="QPushButton" name="LoadEpsilonsButton">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>Load epsilons from file</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="DataParametersSection">
+         <property name="title">
+          <string>Data parameters</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <layout class="QHBoxLayout" name="ACFofDataSection">
+            <item>
+             <widget class="QPushButton" name="ACFdataButton">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>ACF of data, length:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="ACFdataLengthBox">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>100</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="pACFdataSection">
+            <item>
+             <widget class="QPushButton" name="pACFdataButton">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>pACF of data, length:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="pACFdataLengthBox">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>100</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="EpsilonsParametersSection">
+         <property name="title">
+          <string>Epsilons</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <item>
+           <layout class="QHBoxLayout" name="ACFofEpsilonsSection">
+            <item>
+             <widget class="QPushButton" name="ACFepsilonsButton_2">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>ACF of epsilons, length:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="ACFepsilonsLengthBox">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>100</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="pACFepsilonsSection">
+            <item>
+             <widget class="QPushButton" name="pACFepsilonsButton">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>pACF of epsilons, length:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="pACFepsilonsLengthBox">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>100</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="plotEpsilonsButton">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>Plot epsilons</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+   <zorder>RightControls</zorder>
+   <zorder>Leftcontrols</zorder>
+   <zorder>Chart</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1587</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionLoad_data"/>
+    <addaction name="actionLoad_epsilons"/>
+    <addaction name="actionSave_model"/>
+    <addaction name="actionClear_memory"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionLoad_data">
+   <property name="text">
+    <string>Load data</string>
+   </property>
+  </action>
+  <action name="actionLoad_epsilons">
+   <property name="text">
+    <string>Load epsilons</string>
+   </property>
+  </action>
+  <action name="actionSave_model">
+   <property name="text">
+    <string>Save model</string>
+   </property>
+  </action>
+  <action name="actionClear_memory">
+   <property name="text">
+    <string>Clear memory</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header location="global">qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>DecreaseARButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>DecreaseARModel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>159</x>
+     <y>510</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>542</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LoadEpsilonsButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>LoadEpsilonsFromFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1444</x>
+     <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1580</x>
+     <y>218</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComputeEpsilonsButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ComputeEpsilons()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1371</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1580</x>
+     <y>78</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HighOrderARedit</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ControlField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1535</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1582</x>
+     <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ACFdataLengthBox</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ControlField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1466</x>
+     <y>383</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1585</x>
+     <y>376</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pACFdataLengthBox</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ControlField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1512</x>
+     <y>488</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1587</x>
+     <y>485</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ACFepsilonsLengthBox</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ControlField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1513</x>
+     <y>633</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1583</x>
+     <y>629</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pACFepsilonsLengthBox</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ControlField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1530</x>
+     <y>717</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1583</x>
+     <y>714</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ACFdataButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ComputeACFdata()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1355</x>
+     <y>383</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1587</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pACFdataButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ComputepACFdata()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1348</x>
+     <y>498</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1584</x>
+     <y>468</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ACFepsilonsButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ComputeACFepsilons()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1389</x>
+     <y>624</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1586</x>
+     <y>592</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pACFepsilonsButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ComputepACFepsilons()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1376</x>
+     <y>728</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1587</x>
+     <y>679</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plotEpsilonsButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>PlotEpsilons()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1401</x>
+     <y>787</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1585</x>
+     <y>760</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>FitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>Fit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>72</x>
+     <y>793</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>101</x>
+     <y>818</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AproximationButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>aproximateCurrentModel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>557</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>603</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>IncreaseARButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>IncreaseARModel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>49</x>
+     <y>508</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>510</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>IncreaseMAButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>IncreaseMAModel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>235</x>
+     <y>501</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>409</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DecreaseMAButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>DecreaseMAModel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>513</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>457</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ARTable</sender>
+   <signal>itemChanged(QTableWidgetItem*)</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ChangeARModel(QTableWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>124</x>
+     <y>178</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>8</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>MATable</sender>
+   <signal>itemChanged(QTableWidgetItem*)</signal>
+   <receiver>ARMAXmainWindow</receiver>
+   <slot>ChangeMAModel(QTableWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>274</x>
+     <y>233</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>256</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>DecreaseARModel()</slot>
+  <slot>aproximateCurrentModel()</slot>
+  <slot>ChangeARModel(QTableWidgetItem*)</slot>
+ </slots>
+</ui>
