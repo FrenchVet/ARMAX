@@ -1,7 +1,7 @@
 #ifndef OTHERFUNCTIONS_H
 #define OTHERFUNCTIONS_H
 #include "QDialog"
-#include "dlib2/optimization.h"
+#include "dlib/optimization.h"
 
 typedef dlib::matrix<double,0,1> column_vector;
 

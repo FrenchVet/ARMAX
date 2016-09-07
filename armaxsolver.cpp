@@ -9,7 +9,7 @@ Armaxsolver::Armaxsolver()
 {
 
     this->ARMA.set_size(2);
-    this->ARMA = 0, 0;
+    this->ARMA = 1, 1;
 }
 
 void Armaxsolver::SetInputData(column_vector Data)
@@ -46,18 +46,14 @@ column_vector Armaxsolver::ReturnSignal()
    return this->Model.ReturnSignal();
 }
 
+column_vector Armaxsolver::ReturnEpsilons()
+{
+   return this->Model.ReturnEpsilons();
+}
+
 column_vector Armaxsolver::ReturnAproximation()
 {
-//    dlib::matrix<double>  AutocorMatrix = this->Model.ComputeACMatrix(10);
-//    column_vector  AutocorVector = this->Model.ComputeACVector(10);
 
-//    column_vector OutputModel;
-
-//    AutocorMatrix = dlib::inv(AutocorMatrix);
-
-//    OutputModel = AutocorMatrix*AutocorVector;
-
-//    this->Model.ComputeEpsilons(OutputModel);
    this->Model.AproximateModel();
    return this->Model.ReturnAproximation();
 }
@@ -103,6 +99,18 @@ double Armaxsolver::ReturnMSEofFit()
 }
 
 /////////////////////////////////////////SOLVING////////////////////////////////////////////////////
+void Armaxsolver::ComputeSigma()
+{
+   this->Model.ComputeSigma();
+   return;
+}
+
+void Armaxsolver::ComputeAICFPE()
+{
+   this->Model.CalculateAICFPE();
+   return;
+}
+
 column_vector Armaxsolver::ComputeEpsilons(int HighOrderArmaLevel)
 {
     if(HighOrderArmaLevel == 0)
@@ -115,34 +123,18 @@ column_vector Armaxsolver::ComputeEpsilons(int HighOrderArmaLevel)
     column_vector  AutocorVector = this->Model.ComputeACVector(HighOrderArmaLevel);
 
     column_vector OutputModel;
+    dlib::matrix<double> InvertedMatrix;
 
-    AutocorMatrix = dlib::inv(AutocorMatrix);
+    InvertedMatrix = dlib::inv(AutocorMatrix);
 
-    OutputModel = AutocorMatrix*AutocorVector;
+    OutputModel = InvertedMatrix*AutocorVector;
 
     this->Model.ComputeEpsilons(OutputModel);
     return this->Model.ReturnEpsilons();
 }
 
-void Armaxsolver::FitModel(int HighOrderArmaLevel, column_vector StartPoints)
+void Armaxsolver::FitModelwithEpsilons(column_vector StartPoints)
 {
-    if(HighOrderArmaLevel == 0)
-    {
-        HighOrderArmaLevel = dlib::sum(this->ARMA)*5;
-    }
-
-
-    dlib::matrix<double>  AutocorMatrix = this->Model.ComputeACMatrix(HighOrderArmaLevel);
-    column_vector  AutocorVector = this->Model.ComputeACVector(HighOrderArmaLevel);
-
-    column_vector OutputModel;
-
-    AutocorMatrix = dlib::inv(AutocorMatrix);
-
-    OutputModel = AutocorMatrix*AutocorVector;
-
-    this->Model.ComputeEpsilons(OutputModel);
-
 
    dlib::find_min_bobyqa(this->Model, StartPoints, (2*dlib::sum(this->ARMA)+1),dlib::uniform_matrix<double>(sum(this->ARMA),1, -1), dlib::uniform_matrix<double>(sum(this->ARMA),1, 1), 0.0001, 1e-7, 10000);
    this->ApplySolution(StartPoints);
@@ -152,7 +144,17 @@ void Armaxsolver::FitModel(int HighOrderArmaLevel, column_vector StartPoints)
 
 void Armaxsolver::FitModel( column_vector StartPoints)
 {
-   this->Model.SetEpsilons(this->Model.ReturnEpsilons());
+    dlib::matrix<double>  AutocorMatrix = this->Model.ComputeACMatrix(dlib::sum(this->ARMA)*5);
+    column_vector  AutocorVector = this->Model.ComputeACVector(dlib::sum(this->ARMA)*5);
+
+    column_vector OutputModel;
+
+    AutocorMatrix = dlib::inv(AutocorMatrix);
+
+    OutputModel = AutocorMatrix*AutocorVector;
+
+    this->Model.ComputeEpsilons(OutputModel);
+
    dlib::find_min_bobyqa(this->Model, StartPoints, (2*dlib::sum(this->ARMA)+1),dlib::uniform_matrix<double>(sum(this->ARMA),1, -1), dlib::uniform_matrix<double>(sum(this->ARMA),1, 1), 0.0001, 1e-7, 10000);
    this->ApplySolution(StartPoints);
    return;
@@ -160,7 +162,6 @@ void Armaxsolver::FitModel( column_vector StartPoints)
 
 void Armaxsolver::FitModelwithEpsilons()
 {
-   this->Model.SetEpsilons(this->Model.ReturnEpsilons());
 
    column_vector StartingPoints;
    StartingPoints.set_size(dlib::sum(this->ARMA));
@@ -169,9 +170,7 @@ void Armaxsolver::FitModelwithEpsilons()
    StartingPoints(k) = 0.5;
    }
    StartingPoints = this->GridSearch();
-   std::cout << StartingPoints << "\n\n";
    dlib::find_min_bobyqa(this->Model, StartingPoints, (2*dlib::sum(this->ARMA)+1),dlib::uniform_matrix<double>(sum(this->ARMA),1, -1), dlib::uniform_matrix<double>(sum(this->ARMA),1, 1), 0.0001, 1e-7, 10000);
-   std::cout << StartingPoints << "\n";
    this->ApplySolution(StartingPoints);
    return;
 
@@ -197,41 +196,34 @@ void Armaxsolver::FitModel()
    StartingPoints(k) = 0.5;
    }
    StartingPoints = this->GridSearch();
-   std::cout << StartingPoints << "\n\n";
    dlib::find_min_bobyqa(this->Model, StartingPoints, (2*dlib::sum(this->ARMA)+1),dlib::uniform_matrix<double>(sum(this->ARMA),1, -1), dlib::uniform_matrix<double>(sum(this->ARMA),1, 1), 0.0001, 1e-7, 10000);
-   std::cout << StartingPoints << "\n";
    this->ApplySolution(StartingPoints);
    return;
 
 }
 
-void Armaxsolver::FitModel(int HighOrderArmaLevel)
+void Armaxsolver::FitJustAR()
 {
-   dlib::matrix<double>  AutocorMatrix = this->Model.ComputeACMatrix(HighOrderArmaLevel);
-   column_vector  AutocorVector = this->Model.ComputeACVector(HighOrderArmaLevel);
+   dlib::matrix<double>  AutocorMatrix = this->Model.ComputeACMatrix(dlib::sum(this->ARMA)*5);
+   column_vector  AutocorVector = this->Model.ComputeACVector(dlib::sum(this->ARMA)*5);
 
    column_vector OutputModel;
 
    AutocorMatrix = dlib::inv(AutocorMatrix);
 
    OutputModel = AutocorMatrix*AutocorVector;
-
    this->Model.ComputeEpsilons(OutputModel);
 
-   column_vector StartingPoints;
-   StartingPoints.set_size(dlib::sum(this->ARMA));
-   for (int k = 0; k < dlib::sum(this->ARMA); k++)
-   {
-   StartingPoints(k) = 0.5;
-   }
-   StartingPoints = this->GridSearch();
-   std::cout << StartingPoints << "\n\n";
-   dlib::find_min_bobyqa(this->Model, StartingPoints, (2*dlib::sum(this->ARMA)+1),dlib::uniform_matrix<double>(sum(this->ARMA),1, -1), dlib::uniform_matrix<double>(sum(this->ARMA),1, 1), 0.0001, 1e-7, 10000);
-   std::cout << StartingPoints << "\n";
-   this->ApplySolution(StartingPoints);
+   AutocorMatrix = this->Model.ComputeACMatrix(this->ARMA(0));
+   AutocorVector = this->Model.ComputeACVector(this->ARMA(0));
+   OutputModel;
+   AutocorMatrix = dlib::inv(AutocorMatrix);
+   OutputModel = AutocorMatrix*AutocorVector;
+   this->ApplySolution(OutputModel);
    return;
 
 }
+
 
 column_vector Armaxsolver::GridSearch ()
 {
@@ -304,6 +296,7 @@ column_vector Armaxsolver::GridSearch ()
 
 void Armaxsolver::ApplySolution(column_vector Solution)
 {
+    this->Model.ComputeSigma();
     column_vector AR;
     AR.set_size(this->ARMA(0));
     int m;

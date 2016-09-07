@@ -11,8 +11,7 @@ CustomPlotDialog::~CustomPlotDialog()
 {
     delete ui;
 
-    ui->Chart->setInteraction(QCP::iRangeDrag, true);
-    ui->Chart->setInteraction(QCP::iRangeZoom, true);
+
 }
 
 void CustomPlotDialog::setData(QVector<double> y, QVector<double> x, QColor color)
@@ -22,6 +21,8 @@ void CustomPlotDialog::setData(QVector<double> y, QVector<double> x, QColor colo
     ui->Chart->graph(0)->setData(x, y);
     ui->Chart->xAxis->setRange(0, x.size());
     ui->Chart->yAxis->setRange(-10, 10);
+    ui->Chart->setInteraction(QCP::iRangeDrag, true);
+    ui->Chart->setInteraction(QCP::iRangeZoom, true);
     ui->Chart->replot();
     return;
 }

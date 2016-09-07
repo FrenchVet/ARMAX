@@ -17,6 +17,7 @@ public:
   column_vector ReturnACF(int length);
   column_vector ReturnACFepsilons(int length);
   column_vector ReturnSignal();
+  column_vector ReturnEpsilons();
   column_vector ReturnAproximation();
   double ReturnSigma();
   double ReturnMSEofFit();
@@ -25,16 +26,19 @@ public:
   double ReturnAIC();
   double ReturnFPE();
 
+  void ComputeSigma();
+  void ComputeAICFPE();
 
+  void FitJustAR();
   void FitModel(); //full auto
-  void FitModel(int HighOrderArmaLevel); //set the level of high order arma to compute epsilons
   void FitModelwithEpsilons(); //set epsilons
-  void FitModel(column_vector StartPoints);//set all
-  void FitModel(int HighOrderArmaLevel, column_vector StartPoints); //set starting points but compute epsilons
-                                                                    //if order = 0 -> autocompute
+  void FitModel(column_vector StartPoints);
+  void FitModelwithEpsilons(column_vector StartPoints);
+
   column_vector ComputeEpsilons(int HighOrderArmaLevel);
 
 private:
+
   column_vector GridSearch ();
   void ApplySolution(column_vector Solution);
   Armaxmodel Model;

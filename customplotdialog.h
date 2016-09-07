@@ -19,7 +19,6 @@ public:
     ~CustomPlotDialog();
     void setData(QVector<double> y, QVector<double> x, QColor color);
 
-private:
     Ui::CustomPlotDialog *ui;
 };
 

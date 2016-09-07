@@ -12,8 +12,10 @@
 #include "armaxmodel.h"
 #include <fstream>
 #include <sstream>
-#include "dlib2/optimization.h"
+#include "dlib/optimization.h"
 #include "customplotdialog.h"
+#include "fittingthread.h"
+#include <QThread>
 
 typedef dlib::matrix<double,0,1> column_vector;
 
@@ -32,23 +34,19 @@ public:
 public slots:
 
     void LoadEpsilonsFromFile(){this->on_actionLoad_epsilons_triggered();}
-    void Fit(){;}
-    void aproximateCurrentModel(){;}
+    void Fit();
+    void aproximateCurrentModel();
     void PlotEpsilons();
     void ComputeEpsilons();
     void ComputeACFdata();
-    void ComputepACFdata(){;}
     void ComputeACFepsilons();
-    void ComputepACFepsilons(){;}
     void DecreaseARModel();
     void IncreaseARModel();
     void DecreaseMAModel();
     void IncreaseMAModel();
-    void ChangeMAModel(QTableWidgetItem* item);
-    void ChangeARModel(QTableWidgetItem* item);
     void ControlField();
-
-    //ToDO: progress bar, separate thread, ultra resizable graphics,
+    void modelFited();
+    void CheckTable();
 
 
 private slots:
@@ -61,6 +59,10 @@ private slots:
     void on_actionClear_memory_triggered();
 
 private:
+    void UpdateARMAname();
+    void UpdateSigmaLabels();
+    void UpdateARMAtable();
+    FittingThread *Thread;
     Ui::ARMAXmainWindow *ui;
     Armaxsolver Solver;
     QVector<double> y;

@@ -4,7 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <QMainWindow>
-#include "dlib2/optimization.h"
+#include "dlib/optimization.h"
 #include <stdlib.h>
 #include "other_functions.h"
 
@@ -35,20 +35,18 @@ public:
   column_vector  ComputeACF(int Length);
   column_vector  ComputeACFepsilons(int Length);
 
+  void ComputeSigma();
+  void CalculateAICFPE();
 
   void ComputeEpsilons(column_vector HighOrderAR);
   dlib::matrix<double,0,0> ComputeACMatrix(int Size);
   column_vector ComputeACVector(int Size);
   void AproximateModel();
-  //void Predict(int x);
-
 
   double operator() (const column_vector& Model) const;
 
 private:
-  void ComputeSigma();
-  void ComputeAIC();
-  void ComputeFPE();
+
 
   column_vector  AR;
   column_vector  MA;
@@ -59,8 +57,8 @@ private:
   column_vector E;
 
   double Sigma = 1;
-  int AIC = 0;
-  int FPE = 0;
+  double AIC = 0;
+  double FPE = 0;
 };
 
 #endif // ARMAXMODEL_H

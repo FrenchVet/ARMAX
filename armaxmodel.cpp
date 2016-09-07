@@ -6,7 +6,11 @@ Armaxmodel::Armaxmodel()
 {
 
     this->ARMA.set_size(2);
-    this->ARMA = 0, 0;
+    this->ARMA = 1, 1;
+    this->AR.set_size(1);
+    this->MA.set_size(1);
+    this->AR = 0;
+    this->MA = 0;
 }
 
 
@@ -33,8 +37,8 @@ void Armaxmodel::SetEpsilons(column_vector Epsilons)
 {
     this->E = Epsilons;
     this->ComputeSigma();
-    this->ComputeAIC();
-    this->ComputeFPE();
+    this->CalculateAICFPE();
+
 }
 
 ///////////////////////////////////////////////////RETURNING//////////////////////////////////////
@@ -118,8 +122,7 @@ void Armaxmodel::ComputeEpsilons(column_vector HighOrderAR)
     }
 
     this->ComputeSigma();
-    this->ComputeAIC();
-    this->ComputeFPE();
+    this->CalculateAICFPE();
     return;
 }
 
@@ -200,6 +203,7 @@ void Armaxmodel::AproximateModel()
             this->yAprox(i) += MA(m)*this->E(i-m-1);
         }
     }
+    ComputeSigma();
 }
 
 
@@ -285,15 +289,10 @@ void Armaxmodel::ComputeSigma()
     return;
 }
 
-void Armaxmodel::ComputeAIC()
+void Armaxmodel::CalculateAICFPE()
 {
     this-> AIC = log(this->Sigma*(1.0 + 2*(double)dlib::sum(ARMA)/(double)this->y.size()));
-    return;
+    this->FPE = this->Sigma*((1.0 + (double)dlib::sum(ARMA)/(double)this->y.size())/(1.0 + (double)dlib::sum(ARMA)/(double)this->y.size()));
 }
 
-void Armaxmodel::ComputeFPE()
-{
-    this->FPE = this->Sigma*((1.0 + (double)dlib::sum(ARMA)/(double)this->y.size())/(1.0 + (double)dlib::sum(ARMA)/(double)this->y.size()));
-    return;
-}
 

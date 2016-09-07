@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     csvparser.cc \
     armaxmodel.cpp \
     armaxsolver.cpp \
-    customplotdialog.cpp
+    customplotdialog.cpp \
+    fittingthread.cpp
 
 HEADERS  += armaxmainwindow.h \
     qcustomplot.h \
@@ -30,7 +31,7 @@ HEADERS  += armaxmainwindow.h \
     armaxsolver.h \
     armaxfunctor.h \
     customplotdialog.h \
-    dlib2/optimization.h
+    fittingthread.h
 
 
 FORMS    += armaxmainwindow.ui \
